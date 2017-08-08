@@ -1,0 +1,4 @@
+使用Quartz配置作业
+	两种方式：
+		1、org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean
+		2、org.springframework.scheduling.quartz.JobDetailFactoryBean
