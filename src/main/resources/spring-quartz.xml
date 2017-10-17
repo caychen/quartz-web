@@ -30,23 +30,23 @@
 	
 	<!-- 使用CronTriggerFactoryBean创建简单的crontrigger -->
 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="jobDetailBean"></property><!-- 此处使用JobDetailFactoryBean创建的jobDetail实例，当然也可以使用MethodInvokingJobDetailFactoryBean创建的jobDetail实例 -->
+		<property name="jobDetail" ref="invokingJobDetail"></property><!-- 此处使用JobDetailFactoryBean创建的jobDetail实例，当然也可以使用MethodInvokingJobDetailFactoryBean创建的jobDetail实例 -->
 		<property name="cronExpression" value="0/5 * * * * ?"></property>
 	</bean>
 	
 	<bean id="" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="jobDetails">
+		<!-- 可以不需要配置jobDetails,因为已经配置在triggers中 -->
+		<!-- <property name="jobDetails">
 			<list>
 				<ref bean="invokingJobDetail"/>
 				<ref bean="jobDetailBean"/>
 			</list>
-		</property>
+		</property> -->
 		<property name="triggers">
 			<list>
-				<ref bean="simpleTrigger"/>
+				<!-- <ref bean="simpleTrigger"/> -->
 				<ref bean="cronTrigger"/>
 			</list>
 		</property>
 	</bean>
-
 </beans>
